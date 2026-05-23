@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RealEstateHub Jaipur - Find your perfect property in Jaipur with our premium real estate listings and expert guidance.">
+    <meta name="theme-color" content="#0066cc">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <title>RealEstateHub Jaipur - Find Your Perfect Property</title>
+    <style>
+        /* ============================================
+           RESET & BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: #0066cc;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0052a3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e8e8e8;
+        }
+
+        /* ============================================
+           NAVIGATION & HEADER
+           ============================================ */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0066cc;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0066cc;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ============================================
+           SECTION 1: PROPERTY FILTER PAGE
+           ============================================ */
+        .properties-section {
+            background-color: #f8f9fa;
+            padding: 40px 20px;
+        }
+
+        .properties-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+        }
+
+        /* Filter Sidebar */
+        .filter-sidebar {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            height: fit-content;
+        }
+
+        .filter-group {
+            margin-bottom: 25px;
+        }
+
+        .filter-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .filter-input,
+        .filter-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .filter-input:focus,
+        .filter-select:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .price-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #0066cc;
+        }
+
+        .checkbox-item label {
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .stepper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stepper button {
+            width: 36px;
+            height: 36px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            transition: all 0.3s;
+        }
+
+        .stepper button:hover {
+            background-color: #0066cc;
+            color: white;
+            border-color: #0066cc;
+        }
+
+        .stepper input {
+            flex: 1;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 8px;
+            font-size: 1rem;
+        }
+
+        .filter-btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .filter-btn-group button {
+            flex: 1;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        #applyFiltersBtn {
+            background-color: #0066cc;
+            color: white;
+        }
+
+        #applyFiltersBtn:hover {
+            background-color: #0052a3;
+        }
+
+        #resetFiltersBtn {
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        #resetFiltersBtn:hover {
+            background-color: #e8e8e8;
+        }
+
+        /* Property Grid */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .property-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .property-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .property-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .property-info {
+            padding: 20px;
+        }
+
+        .property-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0066cc;
+            margin-bottom: 8px;
+        }
+
+        .property-address {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .property-stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: #1a1a1a;
+            font-size: 1.1rem;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .property-card .btn-primary {
+            width: 100%;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* ============================================
+           SECTION 2: CONTACT FORM LAYOUT
+           ============================================ */
+        .contact-section {
+            background-color: white;
+            padding: 60px 20px;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            background-color: #0066cc;
+            color: white;
+            padding: 14px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .form-submit:hover {
+            background-color: #0052a3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 16px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            animation: slideDown 0.3s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .info-block {
+            display: flex;
+            gap: 15px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #e6f0ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .info-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #1a1a1a;
+        }
+
+        .info-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* ============================================
+           SECTION 3: ABOUT US SECTION
+           ============================================ */
+        .about-section {
+            background-color: white;
+            padding: 60px 20px;
+        }
+
+        .hero-content {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        /* Statistics Banner */
+        .stats-banner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            background: linear-gradient(135deg, #0066cc 0%, #004999 100%);
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .stat-item {
+            color: white;
+        }
+
+        .stat-item .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .stat-item .stat-label {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-avatar {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .team-info {
+            padding: 25px;
+        }
+
+        .team-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            color: #0066cc;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .team-bio {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN (Mobile-First)
+           ============================================ */
+        @media (max-width: 768px) {
+            /* Navigation */
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                background-color: white;
+                padding: 20px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 12px;
+                border-bottom: 1px solid #eee;
+            }
+
+            /* Properties Section */
+            .properties-container {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-sidebar {
+                grid-column: 1 / -1;
+            }
+
+            .properties-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Contact Section */
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            /* Team Grid */
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Section Titles */
+            .section-title {
+                font-size: 2rem;
+            }
+
+            /* Stats Banner */
+            .stats-banner {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 30px 20px;
+            }
+
+            .stat-item .stat-value {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 15px;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .section {
+                padding: 40px 15px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .properties-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-inputs {
+                grid-template-columns: 1fr;
+            }
+
+            .property-stats {
+                gap: 10px;
+            }
+
+            .stat-value {
+                font-size: 0.95rem;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         HEADER & NAVIGATION
+         ============================================ -->
+    <header>
+        <nav>
+            <div class="logo">RealEstateHub Jaipur</div>
+            <ul class="nav-links">
+                <li><a href="#properties">Properties</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============================================
+         SECTION 1: PROPERTY FILTER PAGE
+         ============================================ -->
+    <section class="properties-section" id="properties">
+        <div class="container">
+            <h2 class="section-title">Find Your Property</h2>
+            <p class="section-subtitle">Browse through our extensive collection of premium properties</p>
+
+            <div class="properties-container">
+                <!-- Filter Sidebar -->
+                <aside class="filter-sidebar">
+                    <h3 style="margin-bottom: 25px; font-size: 1.3rem;">Filters</h3>
+
+                    <!-- Location Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">Location</label>
+                        <select class="filter-select" id="locationFilter">
+                            <option value="">All Locations</option>
+                            <option value="C Scheme">C Scheme</option>
+                            <option value="Bani Park">Bani Park</option>
+                            <option value="Malviya Nagar">Malviya Nagar</option>
+                            <option value="Mansarovar">Mansarovar</option>
+                            <option value="Jawahar Nagar">Jawahar Nagar</option>
+                            <option value="Indra Colony">Indra Colony</option>
+                        </select>
+                    </div>
+
+                    <!-- Price Range Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">Price Range</label>
+                        <div class="price-inputs">
+                            <input
+                                type="number"
+                                class="filter-input"
+                                id="minPrice"
+                                placeholder="Min"
+                                min="0"
+                            />
+                            <input
+                                type="number"
+                                class="filter-input"
+                                id="maxPrice"
+                                placeholder="Max"
+                                min="0"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Property Type Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">Property Type</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="house" value="House" class="propertyTypeCheckbox" />
+                                <label for="house">House</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="apartment" value="Apartment" class="propertyTypeCheckbox" />
+                                <label for="apartment">Apartment</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="condo" value="Condo" class="propertyTypeCheckbox" />
+                                <label for="condo">Condo</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="commercial" value="Commercial" class="propertyTypeCheckbox" />
+                                <label for="commercial">Commercial</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bedrooms Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">Bedrooms</label>
+                        <div class="stepper">
+                            <button type="button" id="decreaseBeds">−</button>
+                            <input type="number" id="bedroomsInput" value="0" min="0" readonly />
+                            <button type="button" id="increaseBeds">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Bathrooms Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">Bathrooms</label>
+                        <div class="stepper">
+                            <button type="button" id="decreaseBaths">−</button>
+                            <input type="number" id="bathroomsInput" value="0" min="0" readonly />
+                            <button type="button" id="increaseBaths">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Filter Action Buttons -->
+                    <div class="filter-btn-group">
+                        <button id="applyFiltersBtn" class="btn btn-primary">Apply Filters</button>
+                        <button id="resetFiltersBtn" class="btn btn-secondary">Reset</button>
+                    </div>
+                </aside>
+
+                <!-- Property Grid -->
+                <main>
+                    <div class="properties-grid" id="propertiesGrid">
+                        <!-- Property cards will be dynamically rendered here -->
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 2: CONTACT FORM LAYOUT
+         ============================================ -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">Have questions? We'd love to hear from you.</p>
+
+            <div class="contact-container">
+                <!-- Contact Form -->
+                <div>
+                    <div class="success-message" id="successMessage">
+                        <strong>Success!</strong> Your message has been sent. We'll get back to you soon.
+                    </div>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input
+                                type="text"
+                                id="fullName"
+                                name="fullName"
+                                required
+                                placeholder="John Doe"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                                placeholder="john@example.com"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="(555) 123-4567"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inquiryType">Inquiry Type *</label>
+                            <select id="inquiryType" name="inquiryType" required>
+                                <option value="">Select an inquiry type</option>
+                                <option value="Buying">Buying</option>
+                                <option value="Selling">Selling</option>
+                                <option value="Renting">Renting</option>
+                                <option value="General">General</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                required
+                                placeholder="Tell us more about your inquiry..."
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="form-submit">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info & Map -->
+                <div class="contact-info">
+                    <div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 20px;">Contact Information</h3>
+                    </div>
+
+                    <div class="info-block">
+                        <div class="info-icon">📍</div>
+                        <div class="info-content">
+                            <h4>Address</h4>
+                            <p>Malviya Nagar, Jaipur<br />Rajasthan, India 302017</p>
+                        </div>
+                    </div>
+
+                    <div class="info-block">
+                        <div class="info-icon">☎️</div>
+                        <div class="info-content">
+                            <h4>Phone</h4>
+                            <p>+91-9876-543-210<br />+91-141-2345-678</p>
+                        </div>
+                    </div>
+
+                    <div class="info-block">
+                        <div class="info-icon">✉️</div>
+                        <div class="info-content">
+                            <h4>Email</h4>
+                            <p>contact@realestatejaipur.com</p>
+                        </div>
+                    </div>
+
+                    <div class="info-block">
+                        <div class="info-icon">🕐</div>
+                        <div class="info-content">
+                            <h4>Business Hours</h4>
+                            <p>Mon - Fri: 9:00 AM - 6:00 PM<br />Sat - Sun: 10:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="map-placeholder">🗺️ Map Placeholder</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 3: ABOUT US SECTION
+         ============================================ -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">About RealEstateHub</h2>
+            <p class="section-subtitle">Your trusted partner in real estate</p>
+
+            <!-- Hero Content -->
+            <div class="hero-content">
+                <p>
+                    RealEstateHub Jaipur is your trusted partner in finding premium residential and commercial properties in Jaipur. With a decade of excellence in the real estate industry, we have successfully facilitated over 500+ property transactions worth ₹50+ Crores. Our team of experienced professionals is dedicated to making your real estate journey smooth, transparent, and rewarding.
+                </p>
+                <p style="margin-top: 15px; color: #666;">
+                    Whether you're looking to buy your dream home, invest in commercial property, or sell your existing asset, we provide expert guidance backed by deep market knowledge and personalized service. Our commitment is to build long-term relationships with our clients based on trust, integrity, and exceptional results. Every transaction is handled with meticulous care and adherence to legal compliance.
+                </p>
+                <p style="margin-top: 15px; color: #666;">
+                    We understand the Jaipur real estate market intimately, from the premium localities of Malviya Nagar and C Scheme to the emerging commercial zones. Our professional team consists of RERA-registered brokers, legal experts, and property consultants who ensure a hassle-free experience for all our clients.
+                </p>
+            </div>
+
+            <!-- Statistics Banner -->
+            <div class="stats-banner">
+                <div class="stat-item">
+                    <div class="stat-value">10+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">500+</div>
+                    <div class="stat-label">Properties Sold</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">₹50Cr+</div>
+                    <div class="stat-label">Transaction Volume</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">2K+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 40px; text-align: center;">Meet the Team</h3>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-avatar" style="background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop') center/cover;"></div>
+                        <div class="team-info">
+                            <div class="team-name">Rajesh Singh</div>
+                            <div class="team-role">Lead Broker & Founder</div>
+                            <p class="team-bio">
+                                With 12+ years of experience, Rajesh leads our team with deep market knowledge and a proven track record of successful transactions across Jaipur.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-avatar" style="background: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&h=600&fit=crop') center/cover;"></div>
+                        <div class="team-info">
+                            <div class="team-name">Priya Sharma</div>
+                            <div class="team-role">Senior Buying Agent</div>
+                            <p class="team-bio">
+                                Priya specializes in residential property acquisitions with meticulous attention to detail, ensuring perfect matches for homebuyers.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-avatar" style="background: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&h=600&fit=crop') center/cover;"></div>
+                        <div class="team-info">
+                            <div class="team-name">Vikram Patel</div>
+                            <div class="team-role">Sales & Investment Specialist</div>
+                            <p class="team-bio">
+                                Vikram helps property owners maximize their asset value through strategic marketing and expert negotiation techniques.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer>
+        <p>&copy; 2026 RealEstateHub Jaipur. All rights reserved.</p>
+        <p>Your trusted real estate partner in Jaipur.</p>
+    </footer>
+
+    <script>
+        /* ============================================
+           MOCK DATABASE: PROPERTY OBJECTS
+           ============================================
+           This array serves as our mock database of properties.
+           Each object contains all necessary data for a property listing.
+           This structure is easily scalable and can be replaced with
+           a real API call to a backend server.
+        */
+        const properties = [
+            {
+                id: 1,
+                price: 8500000,
+                address: 'MI Road, C Scheme',
+                city: 'C Scheme',
+                beds: 4,
+                baths: 3,
+                sqft: 3500,
+                type: 'House',
+                image: 'https://images.unsplash.com/photo-1570129477492-45f003313e78?w=500&h=350&fit=crop'
+            },
+            {
+                id: 2,
+                price: 4500000,
+                address: 'JLN Marg, Bani Park',
+                city: 'Bani Park',
+                beds: 2,
+                baths: 2,
+                sqft: 1200,
+                type: 'Apartment',
+                image: 'https://images.unsplash.com/photo-1545324418-cc1a9a6fded0?w=500&h=350&fit=crop'
+            },
+            {
+                id: 3,
+                price: 5500000,
+                address: 'Scheme 8, Malviya Nagar',
+                city: 'Malviya Nagar',
+                beds: 3,
+                baths: 2,
+                sqft: 2000,
+                type: 'Condo',
+                image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=500&h=350&fit=crop'
+            },
+            {
+                id: 4,
+                price: 12000000,
+                address: 'D-Block, Mansarovar',
+                city: 'Mansarovar',
+                beds: 5,
+                baths: 4,
+                sqft: 4200,
+                type: 'House',
+                image: 'https://images.unsplash.com/photo-1559080241-7f15ee40d79f?w=500&h=350&fit=crop'
+            },
+            {
+                id: 5,
+                price: 3500000,
+                address: 'Sector A, Jawahar Nagar',
+                city: 'Jawahar Nagar',
+                beds: 2,
+                baths: 1,
+                sqft: 900,
+                type: 'Apartment',
+                image: 'https://images.unsplash.com/photo-1576376581033-7461a0734ae9?w=500&h=350&fit=crop'
+            },
+            {
+                id: 6,
+                price: 7500000,
+                address: 'Indra Colony Main Road',
+                city: 'Indra Colony',
+                beds: 3,
+                baths: 2,
+                sqft: 1800,
+                type: 'Condo',
+                image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&h=350&fit=crop'
+            },
+            {
+                id: 7,
+                price: 25000000,
+                address: 'Commercial Zone, Tonk Road',
+                city: 'Malviya Nagar',
+                beds: 0,
+                baths: 5,
+                sqft: 8000,
+                type: 'Commercial',
+                image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=500&h=350&fit=crop'
+            },
+            {
+                id: 8,
+                price: 5250000,
+                address: 'Vaishali Nagar',
+                city: 'C Scheme',
+                beds: 3,
+                baths: 2,
+                sqft: 2100,
+                type: 'House',
+                image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&h=350&fit=crop'
+            },
+            {
+                id: 9,
+                price: 2800000,
+                address: 'Sanganeri Gate Area',
+                city: 'Bani Park',
+                beds: 1,
+                baths: 1,
+                sqft: 800,
+                type: 'Apartment',
+                image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&h=350&fit=crop'
+            },
+            {
+                id: 10,
+                price: 9250000,
+                address: 'Adarsh Nagar',
+                city: 'Mansarovar',
+                beds: 4,
+                baths: 3,
+                sqft: 2800,
+                type: 'House',
+                image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=350&fit=crop'
+            },
+            {
+                id: 11,
+                price: 4200000,
+                address: 'Sector B, Jawahar Nagar',
+                city: 'Jawahar Nagar',
+                beds: 3,
+                baths: 2,
+                sqft: 1600,
+                type: 'Condo',
+                image: 'https://images.unsplash.com/photo-1512216492206-74e6b64b57bb?w=500&h=350&fit=crop'
+            },
+            {
+                id: 12,
+                price: 6750000,
+                address: 'Shyam Nagar Colony',
+                city: 'Indra Colony',
+                beds: 2,
+                baths: 2,
+                sqft: 1400,
+                type: 'Condo',
+                image: 'https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=500&h=350&fit=crop'
+            }
+        ];
+
+        /* ============================================
+           PROPERTY FILTER LOGIC & RENDERING
+           ============================================ */
+
+        /**
+         * Filters the properties array based on current user selections.
+         * @returns {Array} Filtered array of property objects
+         */
+        function getFilteredProperties() {
+            // Get filter values from DOM inputs
+            const location = document.getElementById('locationFilter').value;
+            const minPrice = parseInt(document.getElementById('minPrice').value) || 0;
+            const maxPrice = parseInt(document.getElementById('maxPrice').value) || Infinity;
+            const bedrooms = parseInt(document.getElementById('bedroomsInput').value);
+            const bathrooms = parseInt(document.getElementById('bathroomsInput').value);
+
+            // Get selected property types from checkboxes
+            const selectedTypes = Array.from(
+                document.querySelectorAll('.propertyTypeCheckbox:checked')
+            ).map(checkbox => checkbox.value);
+
+            // Filter the properties array based on all criteria
+            return properties.filter(property => {
+                // Location filter
+                if (location && property.city !== location) return false;
+
+                // Price range filter
+                if (property.price < minPrice || property.price > maxPrice) return false;
+
+                // Property type filter (if any types are selected, property must match one)
+                if (selectedTypes.length > 0 && !selectedTypes.includes(property.type)) {
+                    return false;
+                }
+
+                // Bedrooms filter
+                if (bedrooms > 0 && property.beds < bedrooms) return false;
+
+                // Bathrooms filter
+                if (bathrooms > 0 && property.baths < bathrooms) return false;
+
+                return true;
+            });
+        }
+
+        /**
+         * Renders property cards to the DOM based on filtered results.
+         * Dynamically creates HTML for each property and updates the grid.
+         */
+        function renderProperties() {
+            const filteredProperties = getFilteredProperties();
+            const propertiesGrid = document.getElementById('propertiesGrid');
+
+            // Clear the grid
+            propertiesGrid.innerHTML = '';
+
+            // If no properties match filters, display a "no results" message
+            if (filteredProperties.length === 0) {
+                propertiesGrid.innerHTML = `
+                    <div class="no-results">
+                        <h3>No Properties Found</h3>
+                        <p>Try adjusting your filters to see more results.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Create a property card for each filtered property
+            filteredProperties.forEach(property => {
+                const card = document.createElement('div');
+                card.className = 'property-card';
+                card.innerHTML = `
+                    <div class="property-image"><img src="${property.image}" alt="${property.address}" loading="lazy" width="500" height="350" onerror="this.src='https://via.placeholder.com/500x350?text=Property+Image'" style="display:block;"></div>
+                    <div class="property-info">
+                        <div class="property-price">₹${property.price.toLocaleString('en-IN')}</div>
+                        <div class="property-address">
+                            ${property.address}<br />
+                            ${property.city}
+                        </div>
+                        <div class="property-stats">
+                            <div class="stat">
+                                <span class="stat-value">${property.beds}</span>
+                                <span class="stat-label">Beds</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">${property.baths}</span>
+                                <span class="stat-label">Baths</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">${property.sqft.toLocaleString()}</span>
+                                <span class="stat-label">Sq Ft</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary">View Details</button>
+                    </div>
+                `;
+                propertiesGrid.appendChild(card);
+            });
+        }
+
+        /**
+         * Resets all filter controls to their default values.
+         */
+        function resetFilters() {
+            document.getElementById('locationFilter').value = '';
+            document.getElementById('minPrice').value = '';
+            document.getElementById('maxPrice').value = '';
+            document.getElementById('bedroomsInput').value = '0';
+            document.getElementById('bathroomsInput').value = '0';
+
+            // Uncheck all property type checkboxes
+            document.querySelectorAll('.propertyTypeCheckbox').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+
+            renderProperties();
+        }
+
+        // Event Listeners for Filter Controls
+        document.getElementById('applyFiltersBtn').addEventListener('click', renderProperties);
+        document.getElementById('resetFiltersBtn').addEventListener('click', resetFilters);
+
+        // Stepper button controls for bedrooms and bathrooms
+        document.getElementById('increaseBeds').addEventListener('click', () => {
+            const input = document.getElementById('bedroomsInput');
+            input.value = parseInt(input.value) + 1;
+        });
+
+        document.getElementById('decreaseBeds').addEventListener('click', () => {
+            const input = document.getElementById('bedroomsInput');
+            if (input.value > 0) input.value = parseInt(input.value) - 1;
+        });
+
+        document.getElementById('increaseBaths').addEventListener('click', () => {
+            const input = document.getElementById('bathroomsInput');
+            input.value = parseInt(input.value) + 1;
+        });
+
+        document.getElementById('decreaseBaths').addEventListener('click', () => {
+            const input = document.getElementById('bathroomsInput');
+            if (input.value > 0) input.value = parseInt(input.value) - 1;
+        });
+
+        // Initial render of all properties on page load
+        document.addEventListener('DOMContentLoaded', renderProperties);
+
+        /* ============================================
+           CONTACT FORM HANDLING
+           ============================================ */
+
+        /**
+         * Handles contact form submission.
+         * Prevents default form submission, validates data,
+         * simulates a network request, and displays success message.
+         */
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form values
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const inquiryType = document.getElementById('inquiryType').value;
+            const message = document.getElementById('message').value.trim();
+
+            // Basic validation
+            if (!fullName || !email || !inquiryType || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Simulate network request with a timeout
+            // In a real application, this would send data to a backend server
+            const submitButton = this.querySelector('.form-submit');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+
+            setTimeout(() => {
+                // Show success message
+                const successMessage = document.getElementById('successMessage');
+                successMessage.classList.add('show');
+
+                // Reset form inputs
+                this.reset();
+
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message';
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+            }, 1000);
+
+            // In a real application, you would send the data like this:
+            /*
+            const formData = {
+                fullName,
+                email,
+                phone,
+                inquiryType,
+                message,
+                timestamp: new Date().toISOString()
+            };
+
+            fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle success
+            })
+            .catch(error => {
+                // Handle error
+            });
+            */
+        });
+
+        /* ============================================
+           MOBILE NAVIGATION TOGGLE
+           ============================================ */
+
+        /**
+         * Toggles mobile navigation menu open/closed.
+         */
+        document.getElementById('hamburger').addEventListener('click', function () {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
